@@ -63,18 +63,48 @@ _-||-_/  \\ \\,/   \\,   \\,  \\,/    ,-_-          _--_-'   \/\\ \\,\ \\,/   \\
 					Console.WriteLine("How many loaves would you like?");
 					string amountString = Console.ReadLine();
 					int amount = int.Parse(amountString);
-					total += Bread.OrderBread(amount);
+					orderTotal += Bread.OrderBread(amount);
 				}
 				case "pastry" || "pastries":
 				{
 					Console.WriteLine("How many pastries would you like?");
 					string amountString = Console.ReadLine();
 					int amount = int.Parse(amountString);
-					total += Pastry.OrderPastry(amount);
+					orderTotal += Pastry.OrderPastry(amount);
 				}
 				case "m":
 				{
 					Menu();	
+				}
+				default:
+				{
+					Console.WriteLine("I'm sorry, but I didn't understand that.");
+					Order();
+				}
+			}
+			Console.WriteLine("The total cost of your order is " + orderTotal + ".");
+			OrderMore();
+		}
+
+		public static void OrderMore()
+		{
+			Console.WriteLine("Would you like to order more? [Y]es or [N]o");
+			string orderMore = Console.ReadLine();
+			orderMore = orderMore.ToLower();
+			switch(orderMore)
+			{
+				case "y":
+				{
+					Order();
+				}
+				case "n":
+				{
+					Console.WriteLine("Thank you for coming to Pierre's Bakery!");
+				}
+				default:
+				{
+					Console.WriteLine("I'm sorry, but I didn't understand that.");
+					OrderMore();
 				}
 			}
 		}
