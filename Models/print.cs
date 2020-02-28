@@ -20,8 +20,8 @@ _-||-_/  \\ \\,/   \\,   \\,  \\,/    ,-_-          _--_-'   \/\\ \\,\ \\,/   \\
                                                                                     -_-        
 			");
 			Console.WriteLine(@"(っ◔◡◔)っ ♥ Today's Specials are: ♥")
-			Console.WriteLine(@"🍞Bread🍞");
-			Console.WriteLine(@"🥐Pastries🥐");
+			Console.WriteLine(@"🍞Buy 2 loaves of bread, Get 1 free! 🍞");
+			Console.WriteLine(@"🥐 Buy 2 pastries, Get 1 half off! 🥐");
 
 		}
 
@@ -29,16 +29,16 @@ _-||-_/  \\ \\,/   \\,   \\,  \\,/    ,-_-          _--_-'   \/\\ \\,\ \\,/   \\
 		{
 			Console.WriteLine(@"(っ◔◡◔)っ ♥ How can we help you today? ♥");
 			Console.ForegroundColor = ConsoleColor.White;
-			Console.WriteLine("(Select a number) \n[1] See the menu. \n[2] Speak to the manager. \n[3] Learn some useful French phrases.");
+			Console.WriteLine("(Select a number) \n[1] Order \n[2] See the menu. \n[3] Learn some useful French phrases.");
 			string menuSelection = Console.ReadLine();
 			Console.ForegroundColor = ConsoleColor.DarkMagenta;
-			switch (menuSelection)
+			switch(menuSelection)
 			{
 				case "1":
-					Console.WriteLine("Here's our menu!");
+					Order();
 					break;
 				case "2":
-					Console.WriteLine("Here's our manager!");
+					Menu();
 					break;
 				case "3":
 					Console.WriteLine("What would you like to say?");
@@ -48,6 +48,40 @@ _-||-_/  \\ \\,/   \\,   \\,  \\,/    ,-_-          _--_-'   \/\\ \\,\ \\,/   \\
 					UserMenu();
 					break;
 			}
+		}
+
+		public static void Order()
+		{
+			Console.WriteLine("What would you like to order? Tell us your order or press [M] to see the Menu.");
+			string userOrder = Console.ReadLine();
+			userOrder = userOrder.ToLower();
+			double orderTotal = 0.00;
+			switch(userOrder)
+			{
+				case "bread":
+				{
+					Console.WriteLine("How many loaves would you like?");
+					string amountString = Console.ReadLine();
+					int amount = int.Parse(amountString);
+					total += Bread.OrderBread(amount);
+				}
+				case "pastry" || "pastries":
+				{
+					Console.WriteLine("How many pastries would you like?");
+					string amountString = Console.ReadLine();
+					int amount = int.Parse(amountString);
+					total += Pastry.OrderPastry(amount);
+				}
+				case "m":
+				{
+					Menu();	
+				}
+			}
+		}
+
+		public static void Menu()
+		{
+			Console.WriteLine("Menu");
 		}
 
 	}
