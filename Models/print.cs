@@ -23,16 +23,19 @@ _-||-_/  \\ \\,/   \\,   \\,  \\,/    ,-_-          _--_-'   \/\\ \\,\ \\,/   \\
                                                                                     -_-        
 			");
 			Console.WriteLine(@"(っ◔◡◔)っ ♥ Today's Specials are: ♥");
-			Console.WriteLine(@"🍞Buy 2 loaves of bread, Get 1 free! 🍞");
-			Console.WriteLine(@"🥐 Buy 2 pastries, Get 1 half off! 🥐");
+			Console.WriteLine(@"🍞 Buy 2 loaves of bread, Get 1 free! 🍞");
+			Console.WriteLine(@"🥐  Buy 2 pastries, Get 1 half off! 🥐");
+			Console.WriteLine("___________________________________________");
 
 		}
 
 		public static void UserMenu()
 		{
+			Console.WriteLine("");
 			Console.WriteLine(@"(っ◔◡◔)っ ♥ How can we help you today? ♥");
+			Console.WriteLine("");
 			Console.ForegroundColor = ConsoleColor.White;
-			Console.WriteLine("(Select a number) \n[1] Order \n[2] See the menu. \n[3] Learn some useful French phrases.");
+			Console.WriteLine("[1] Order \n[2] See the menu. \n[3] Learn some useful French phrases.");
 			string menuSelection = Console.ReadLine();
 			Console.ForegroundColor = ConsoleColor.DarkMagenta;
 			switch(menuSelection)
@@ -55,13 +58,19 @@ _-||-_/  \\ \\,/   \\,   \\,  \\,/    ,-_-          _--_-'   \/\\ \\,\ \\,/   \\
 
 		public static void Order()
 		{
-			Console.WriteLine("What would you like to order? Tell us what item you'd like or press [M] to see the Menu.");
+			Console.Clear();
+			Console.ForegroundColor = ConsoleColor.DarkMagenta;
+			Console.WriteLine("What would you like to order?"); 
+			Console.ForegroundColor = ConsoleColor.White;
+			Console.WriteLine("Enter item name\n[M] to see the Menu.");
 			string userOrder = Console.ReadLine();
 			userOrder = userOrder.ToLower();
+			Console.ForegroundColor = ConsoleColor.DarkMagenta;
 			if (userOrder == "bread")
 			{
 				Bread bread = new Bread();
 				Console.WriteLine("How many loaves of bread would you like?");
+				Console.ForegroundColor = ConsoleColor.White;
 				string amountString = Console.ReadLine();
 				int amount = int.Parse(amountString);
 				for (int i = 0; i < amount; i ++)
@@ -74,6 +83,7 @@ _-||-_/  \\ \\,/   \\,   \\,  \\,/    ,-_-          _--_-'   \/\\ \\,\ \\,/   \\
 			{
 				Pastry pastry = new Pastry();
 				Console.WriteLine("How many pastries would you like?");
+				Console.ForegroundColor = ConsoleColor.White;
 				string amountString = Console.ReadLine();
 				int amount = int.Parse(amountString);
 				for (int i = 0; i < amount; i ++)
@@ -91,15 +101,21 @@ _-||-_/  \\ \\,/   \\,   \\,  \\,/    ,-_-          _--_-'   \/\\ \\,\ \\,/   \\
 				Console.WriteLine("I'm sorry, but I didn't understand that.");
 				Order();
 			}
+			Console.ForegroundColor = ConsoleColor.DarkMagenta;
 			Console.WriteLine("The total cost of your order is $" + orderCost + ".");
 			OrderMore();
 		}
 
 		public static void OrderMore()
 		{
-			Console.WriteLine("Would you like to order more? [Y]es \n[N]o");
+			Console.Clear();
+			Console.ForegroundColor = ConsoleColor.DarkMagenta;
+			Console.WriteLine("Would you like to order more?");
+			Console.ForegroundColor = ConsoleColor.White;
+			Console.WriteLine("[Y]es \n[N]o");
 			string orderMore = Console.ReadLine();
 			orderMore = orderMore.ToLower();
+			Console.ForegroundColor = ConsoleColor.DarkMagenta;
 			switch(orderMore)
 			{
 				case "y":
@@ -123,8 +139,46 @@ _-||-_/  \\ \\,/   \\,   \\,  \\,/    ,-_-          _--_-'   \/\\ \\,\ \\,/   \\
 
 		public static void Menu()
 		{
-			Console.WriteLine("Menu");
-			Order();
+			Console.Clear();
+			Console.ForegroundColor = ConsoleColor.DarkCyan;
+			Console.WriteLine(@"
+           .-.---------------------------------.-.
+          ((o))                                   )
+           \U/_______          _____         ____/
+             |                                  |
+             |        𝓟𝓲𝓮𝓻𝓻𝓮'𝓼 𝓑𝓪𝓴𝓮𝓻𝔂           |
+             |   ______Today's Specials______   |
+             |  🍞 Bread                  $5.00  |
+             |    *Buy 2, Get 1 Free!           |
+             |  🥐 Pastries               $2.00  |
+             |    *3 for $5!                    |
+             |                                  |
+             |        ______Menu______          |
+             |  🥯 Bagels                 $2.00  |
+             |  🍩 Donuts                 $1.00  |
+             |  🍰 Slice of Cake          $4.00  |
+             |  🥧 Pie                   $12.00  |
+             |                                  |
+             |  🥛 Milk                   $1.00  |
+             |  ☕️ Coffee                 $2.00  |
+             |  🍷 Wine                   $6.00  |
+             |____    _______    __  ____    ___|
+            /A\                                  \
+           ((o))                                  )
+            '-'----------------------------------'			
+			");
+			Console.ForegroundColor = ConsoleColor.White;
+			Console.WriteLine("Press [O] to Order");
+			string order = Console.ReadLine();
+			order = order.ToLower();
+			if (order == "o")
+			{
+				Order();
+			}
+			else
+			{
+				Menu();
+			}
 		}
 
 	}
