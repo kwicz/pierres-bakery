@@ -9,6 +9,7 @@ namespace Bakery
     public static void Main()
     {
       Printer.Welcome();
+      Printer.UserMenu();
     }
   }
 }
