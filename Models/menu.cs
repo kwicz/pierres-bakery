@@ -1,8 +1,6 @@
-using System;
 
 namespace Bakery.Models
 {
-
 	public class Bread
 	{
 		public double Cost { get; set; }

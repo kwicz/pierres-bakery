@@ -1,9 +1,12 @@
 using System;
+using System.Collections.Generic;
 
 namespace Bakery.Models
 {
 	public class Printer
 	{
+		public static double orderCost = 0;
+		public static List<string> orderItems = new List<string> {};
 		public static void Welcome()
 		{
 			Console.Clear();
@@ -52,44 +55,43 @@ _-||-_/  \\ \\,/   \\,   \\,  \\,/    ,-_-          _--_-'   \/\\ \\,\ \\,/   \\
 
 		public static void Order()
 		{
-			Console.WriteLine("What would you like to order? Tell us your order or press [M] to see the Menu.");
+			Console.WriteLine("What would you like to order? Tell us what item you'd like or press [M] to see the Menu.");
 			string userOrder = Console.ReadLine();
 			userOrder = userOrder.ToLower();
-			double orderTotal = 0.00;
-			switch(userOrder)
+			if (userOrder == "bread")
 			{
-				case "bread":
+				Bread bread = new Bread();
+				Console.WriteLine("How many loaves of bread would you like?");
+				string amountString = Console.ReadLine();
+				int amount = int.Parse(amountString);
+				for (int i = 0; i < amount; i ++)
 				{
-					Console.WriteLine("How many loaves would you like?");
-					string amountString = Console.ReadLine();
-					int amount = int.Parse(amountString);
-					Bread bread = new Bread();
-					orderTotal += bread.OrderBread(amount);
-					break;
+					orderItems.Add("loaf of bread");
 				}
-
-				case "pastry":
-				{
-					Console.WriteLine("How many pastries would you like?");
-					string amountString = Console.ReadLine();
-					int amount = int.Parse(amountString);
-					Pastry pastry = new Pastry();
-					orderTotal += pastry.OrderPastries(amount);
-					break;
-				}
-				case "m":
-				{
-					Menu();
-					break;
-				}
-				default:
-				{
-					Console.WriteLine("I'm sorry, but I didn't understand that.");
-					Order();
-					break;
-				}
+				orderCost += bread.OrderBread(amount);
 			}
-			Console.WriteLine("The total cost of your order is " + orderTotal + ".");
+			else if (userOrder == "pastry" || userOrder == "pastries")
+			{
+				Pastry pastry = new Pastry();
+				Console.WriteLine("How many pastries would you like?");
+				string amountString = Console.ReadLine();
+				int amount = int.Parse(amountString);
+				for (int i = 0; i < amount; i ++)
+				{
+					orderItems.Add("pastry");
+				}
+				orderCost += pastry.OrderPastries(amount);
+			}
+			else if (userOrder == "m")
+			{
+				Menu();
+			}
+			else
+			{
+				Console.WriteLine("I'm sorry, but I didn't understand that.");
+				Order();
+			}
+			Console.WriteLine("The total cost of your order is $" + orderCost + ".");
 			OrderMore();
 		}
 
@@ -122,6 +124,7 @@ _-||-_/  \\ \\,/   \\,   \\,  \\,/    ,-_-          _--_-'   \/\\ \\,\ \\,/   \\
 		public static void Menu()
 		{
 			Console.WriteLine("Menu");
+			Order();
 		}
 
 	}
