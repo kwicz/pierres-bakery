@@ -19,14 +19,19 @@ _-||-_/  \\ \\,/   \\,   \\,  \\,/    ,-_-          _--_-'   \/\\ \\,\ \\,/   \\
   ||                                               (                               (      
                                                                                     -_-        
 			");
+			Console.WriteLine(@"(っ◔◡◔)っ ♥ Today's Specials are: ♥")
+			Console.WriteLine(@"🍞Bread🍞");
+			Console.WriteLine(@"🥐Pastries🥐");
+
 		}
 
 		public static void UserMenu()
 		{
 			Console.WriteLine(@"(っ◔◡◔)っ ♥ How can we help you today? ♥");
 			Console.ForegroundColor = ConsoleColor.White;
-			Console.WriteLine("(Select a number) \n[1] See the menu. \n[2] Speak to the manager. \n[3] Practice your French.");
+			Console.WriteLine("(Select a number) \n[1] See the menu. \n[2] Speak to the manager. \n[3] Learn some useful French phrases.");
 			string menuSelection = Console.ReadLine();
+			Console.ForegroundColor = ConsoleColor.DarkMagenta;
 			switch (menuSelection)
 			{
 				case "1":
