@@ -19,7 +19,7 @@ _-||-_/  \\ \\,/   \\,   \\,  \\,/    ,-_-          _--_-'   \/\\ \\,\ \\,/   \\
   ||                                               (                               (      
                                                                                     -_-        
 			");
-			Console.WriteLine(@"(っ◔◡◔)っ ♥ Today's Specials are: ♥")
+			Console.WriteLine(@"(っ◔◡◔)っ ♥ Today's Specials are: ♥");
 			Console.WriteLine(@"🍞Buy 2 loaves of bread, Get 1 free! 🍞");
 			Console.WriteLine(@"🥐 Buy 2 pastries, Get 1 half off! 🥐");
 
@@ -63,23 +63,30 @@ _-||-_/  \\ \\,/   \\,   \\,  \\,/    ,-_-          _--_-'   \/\\ \\,\ \\,/   \\
 					Console.WriteLine("How many loaves would you like?");
 					string amountString = Console.ReadLine();
 					int amount = int.Parse(amountString);
-					orderTotal += Bread.OrderBread(amount);
+					Bread bread = new Bread();
+					orderTotal += bread.OrderBread(amount);
+					break;
 				}
-				case "pastry" || "pastries":
+
+				case "pastry":
 				{
 					Console.WriteLine("How many pastries would you like?");
 					string amountString = Console.ReadLine();
 					int amount = int.Parse(amountString);
-					orderTotal += Pastry.OrderPastry(amount);
+					Pastry pastry = new Pastry();
+					orderTotal += pastry.OrderPastries(amount);
+					break;
 				}
 				case "m":
 				{
-					Menu();	
+					Menu();
+					break;
 				}
 				default:
 				{
 					Console.WriteLine("I'm sorry, but I didn't understand that.");
 					Order();
+					break;
 				}
 			}
 			Console.WriteLine("The total cost of your order is " + orderTotal + ".");
@@ -88,7 +95,7 @@ _-||-_/  \\ \\,/   \\,   \\,  \\,/    ,-_-          _--_-'   \/\\ \\,\ \\,/   \\
 
 		public static void OrderMore()
 		{
-			Console.WriteLine("Would you like to order more? [Y]es or [N]o");
+			Console.WriteLine("Would you like to order more? [Y]es \n[N]o");
 			string orderMore = Console.ReadLine();
 			orderMore = orderMore.ToLower();
 			switch(orderMore)
@@ -96,15 +103,18 @@ _-||-_/  \\ \\,/   \\,   \\,  \\,/    ,-_-          _--_-'   \/\\ \\,\ \\,/   \\
 				case "y":
 				{
 					Order();
+					break;
 				}
 				case "n":
 				{
 					Console.WriteLine("Thank you for coming to Pierre's Bakery!");
+					break;
 				}
 				default:
 				{
 					Console.WriteLine("I'm sorry, but I didn't understand that.");
 					OrderMore();
+					break;
 				}
 			}
 		}

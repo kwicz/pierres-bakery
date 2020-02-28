@@ -12,10 +12,9 @@ namespace Bakery.Models
 			Cost = 5.00;
 		}
 
-		public OrderBread(int amount)
+		public double OrderBread(int amount)
 		{
-			Bread bread = new Bread();
-			int total = bread.Cost * amount;
+			double total = Cost * amount;
 			return total;
 		}
 		
@@ -29,10 +28,9 @@ namespace Bakery.Models
 			Cost = 2.00;
 		}
 
-		public OrderPastries(int amount)
+		public double OrderPastries(int amount)
 		{
-			Pastry pastry = new Pastry();
-			int total = pastry.Cost * amount;
+			double total = Cost * amount;
 			return total;
 		}
 
