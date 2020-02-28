@@ -7,6 +7,14 @@ namespace Bakery.Models
 	{
 		public static double orderCost = 0;
 		public static List<string> orderItems = new List<string> {};
+		public static Dictionary<string, double> menuItems = new Dictionary<string, double>(){
+			{"Bagels", 2.00},
+			{"Donuts", 1.00},
+			{"Cake", 4.00},
+			{"Milk", 1.00},
+			{"Coffee", 2.00},
+			{"Wine", 6.00}
+		};
 		public static void Welcome()
 		{
 			Console.Clear();
@@ -27,33 +35,6 @@ _-||-_/  \\ \\,/   \\,   \\,  \\,/    ,-_-          _--_-'   \/\\ \\,\ \\,/   \\
 			Console.WriteLine(@"🥐  Buy 2 pastries, Get 1 half off! 🥐");
 			Console.WriteLine("___________________________________________");
 
-		}
-
-		public static void UserMenu()
-		{
-			Console.WriteLine("");
-			Console.WriteLine(@"(っ◔◡◔)っ ♥ How can we help you today? ♥");
-			Console.WriteLine("");
-			Console.ForegroundColor = ConsoleColor.White;
-			Console.WriteLine("[1] Order \n[2] See the menu. \n[3] Learn some useful French phrases.");
-			string menuSelection = Console.ReadLine();
-			Console.ForegroundColor = ConsoleColor.DarkMagenta;
-			switch(menuSelection)
-			{
-				case "1":
-					Order();
-					break;
-				case "2":
-					Menu();
-					break;
-				case "3":
-					Console.WriteLine("What would you like to say?");
-					break;
-				default:
-					Console.WriteLine("Sorry, we didn't understand that.");
-					UserMenu();
-					break;
-			}
 		}
 
 		public static void Order()
@@ -153,12 +134,11 @@ _-||-_/  \\ \\,/   \\,   \\,  \\,/    ,-_-          _--_-'   \/\\ \\,\ \\,/   \\
              |  🥐 Pastries               $2.00  |
              |    *3 for $5!                    |
              |                                  |
-             |        ______Menu______          |
+             |        ______Food______          |
              |  🥯 Bagels                 $2.00  |
              |  🍩 Donuts                 $1.00  |
-             |  🍰 Slice of Cake          $4.00  |
-             |  🥧 Pie                   $12.00  |
-             |                                  |
+             |  🍰 Cake                   $4.00  |
+             |       ______Drinks______         |
              |  🥛 Milk                   $1.00  |
              |  ☕️ Coffee                 $2.00  |
              |  🍷 Wine                   $6.00  |
@@ -167,8 +147,9 @@ _-||-_/  \\ \\,/   \\,   \\,  \\,/    ,-_-          _--_-'   \/\\ \\,\ \\,/   \\
            ((o))                                  )
             '-'----------------------------------'			
 			");
+			Console.ForegroundColor = ConsoleColor.DarkMagenta;
+			Console.WriteLine((@"(っ◔◡◔)っ ♥ Press [O] to order! ♥"));
 			Console.ForegroundColor = ConsoleColor.White;
-			Console.WriteLine("Press [O] to Order");
 			string order = Console.ReadLine();
 			order = order.ToLower();
 			if (order == "o")
