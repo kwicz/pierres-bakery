@@ -22,7 +22,6 @@ namespace Bakery.Models
 			}
 			return total;
 		}
-		
 	}
 	public class Pastry
 	{
@@ -35,7 +34,18 @@ namespace Bakery.Models
 
 		public double OrderPastries(int amount)
 		{
-			double total = Cost * amount;
+			double total = 0;
+			for (int i = 1; i <= amount; i++)
+			{
+				if (i % 3 != 0)
+				{
+					total += Cost;
+				}
+				else
+				{
+					total++;
+				}
+			}
 			return total;
 		}
 
