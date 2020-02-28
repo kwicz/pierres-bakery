@@ -12,7 +12,14 @@ namespace Bakery.Models
 
 		public double OrderBread(int amount)
 		{
-			double total = Cost * amount;
+			double total = 0;
+			for (int i = 1; i <= amount; i++)
+			{
+				if (i % 3 != 0)
+				{
+					total += Cost;
+				}
+			}
 			return total;
 		}
 		
