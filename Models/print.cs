@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 
 namespace Bakery.Models
 {
@@ -8,8 +7,9 @@ namespace Bakery.Models
 		public static void Welcome()
 		{
 			Console.Clear();
-			Console.ForegroundColor = ConsoleColor.DarkCyan;
+			Console.ForegroundColor = ConsoleColor.DarkMagenta;
 			Console.WriteLine(@"(っ◔◡◔)っ ♥ 𝓦𝓮𝓵𝓬𝓸𝓶𝓮 𝓽𝓸 ♥");
+			Console.ForegroundColor = ConsoleColor.DarkCyan;
 			Console.WriteLine(@"                                                    
 -__ /\\                              )            _-_ _,,         ,,                      
   ||  \\  '                                          -/  )    _   ||                      
@@ -20,7 +20,7 @@ _-||-_/  \\ \\,/   \\,   \\,  \\,/    ,-_-          _--_-'   \/\\ \\,\ \\,/   \\
   ||                                               (                               (      
                                                                                     -_-        
 			");
-			Console.WriteLine("_________________________________________________________________________");
+			Console.WriteLine("___________________________________________________________________________________");
 		}
 
 
@@ -54,7 +54,7 @@ _-||-_/  \\ \\,/   \\,   \\,  \\,/    ,-_-          _--_-'   \/\\ \\,\ \\,/   \\
            ((o))                                  )
             '-'----------------------------------'			
 			");
-			Bakery.Store.Order();
+			NewOrder.Order();
 		}
 
 		public static void Reciept()
@@ -63,13 +63,12 @@ _-||-_/  \\ \\,/   \\,   \\,  \\,/    ,-_-          _--_-'   \/\\ \\,\ \\,/   \\
 			Console.ForegroundColor = ConsoleColor.DarkMagenta;
 			Console.WriteLine(@"(っ◔◡◔)っ ♥ Here's your reciept! Thank you for coming to Pierre's Bakery! ♥");
 			Console.ForegroundColor = ConsoleColor.DarkCyan;
-			Console.WriteLine(@".----------------------------------.");
-			Console.WriteLine(@"|          𝓟𝓲𝓮𝓻𝓻𝓮'𝓼 𝓑𝓪𝓴𝓮𝓻𝔂          |");
-			Bakery.Store.RecieptItems();
-			Console.WriteLine(@"|   𝓣𝓱𝓪𝓷𝓴 𝔂𝓸𝓾 𝓯𝓸𝓻 𝔂𝓸𝓾𝓻 𝓫𝓾𝓼𝓲𝓷𝓮𝓼𝓼!   |");
-			Console.WriteLine(@"'----------------------------------'");
-
+			Console.WriteLine(@".------------------------------.");
+			Console.WriteLine(@"|        𝓟𝓲𝓮𝓻𝓻𝓮'𝓼 𝓑𝓪𝓴𝓮𝓻𝔂        |");
+			NewOrder.RecieptItems();
+			Console.WriteLine(@"| 𝓣𝓱𝓪𝓷𝓴 𝔂𝓸𝓾 𝓯𝓸𝓻 𝔂𝓸𝓾𝓻 𝓫𝓾𝓼𝓲𝓷𝓮𝓼𝓼! |");
+			Console.WriteLine(@"'------------------------------'");
+			Console.ForegroundColor = ConsoleColor.White;
 		}
-
 	}
 }

@@ -1,6 +1,21 @@
+using System.Collections.Generic;
 
 namespace Bakery.Models
 {
+	public class Menu
+	{
+		public static Dictionary<string, double> menuItems = new Dictionary<string, double>(6){
+			{"bagel", 2.00},
+			{"donut", 1.00},
+			{"cake", 4.00},
+			{"milk", 1.00},
+			{"coffee", 2.00},
+			{"wine", 6.00},
+			{"bread", 5.00},
+			{"pastry", 2.00}
+					};
+	}
+
 	public class Bread
 	{
 		public double Cost { get; set; }
@@ -23,6 +38,7 @@ namespace Bakery.Models
 			return total;
 		}
 	}
+
 	public class Pastry
 	{
 		public double Cost { get; set; }
@@ -48,7 +64,5 @@ namespace Bakery.Models
 			}
 			return total;
 		}
-
 	}
-
 }
