@@ -5,16 +5,6 @@ namespace Bakery.Models
 {
 	public class Printer
 	{
-		public static double orderCost = 0;
-		public static List<string> orderItems = new List<string> {};
-		public static Dictionary<string, double> menuItems = new Dictionary<string, double>(){
-			{"Bagels", 2.00},
-			{"Donuts", 1.00},
-			{"Cake", 4.00},
-			{"Milk", 1.00},
-			{"Coffee", 2.00},
-			{"Wine", 6.00}
-		};
 		public static void Welcome()
 		{
 			Console.Clear();
@@ -34,89 +24,9 @@ _-||-_/  \\ \\,/   \\,   \\,  \\,/    ,-_-          _--_-'   \/\\ \\,\ \\,/   \\
 			Console.WriteLine(@"🍞 Buy 2 loaves of bread, Get 1 free! 🍞");
 			Console.WriteLine(@"🥐  Buy 2 pastries, Get 1 half off! 🥐");
 			Console.WriteLine("___________________________________________");
-
 		}
 
-		public static void Order()
-		{
-			Console.Clear();
-			Console.ForegroundColor = ConsoleColor.DarkMagenta;
-			Console.WriteLine("What would you like to order?"); 
-			Console.ForegroundColor = ConsoleColor.White;
-			Console.WriteLine("Enter item name\n[M] to see the Menu.");
-			string userOrder = Console.ReadLine();
-			userOrder = userOrder.ToLower();
-			Console.ForegroundColor = ConsoleColor.DarkMagenta;
-			if (userOrder == "bread")
-			{
-				Bread bread = new Bread();
-				Console.WriteLine("How many loaves of bread would you like?");
-				Console.ForegroundColor = ConsoleColor.White;
-				string amountString = Console.ReadLine();
-				int amount = int.Parse(amountString);
-				for (int i = 0; i < amount; i ++)
-				{
-					orderItems.Add("loaf of bread");
-				}
-				orderCost += bread.OrderBread(amount);
-			}
-			else if (userOrder == "pastry" || userOrder == "pastries")
-			{
-				Pastry pastry = new Pastry();
-				Console.WriteLine("How many pastries would you like?");
-				Console.ForegroundColor = ConsoleColor.White;
-				string amountString = Console.ReadLine();
-				int amount = int.Parse(amountString);
-				for (int i = 0; i < amount; i ++)
-				{
-					orderItems.Add("pastry");
-				}
-				orderCost += pastry.OrderPastries(amount);
-			}
-			else if (userOrder == "m")
-			{
-				Menu();
-			}
-			else
-			{
-				Console.WriteLine("I'm sorry, but I didn't understand that.");
-				Order();
-			}
-			Console.ForegroundColor = ConsoleColor.DarkMagenta;
-			Console.WriteLine("The total cost of your order is $" + orderCost + ".");
-			OrderMore();
-		}
 
-		public static void OrderMore()
-		{
-			Console.Clear();
-			Console.ForegroundColor = ConsoleColor.DarkMagenta;
-			Console.WriteLine("Would you like to order more?");
-			Console.ForegroundColor = ConsoleColor.White;
-			Console.WriteLine("[Y]es \n[N]o");
-			string orderMore = Console.ReadLine();
-			orderMore = orderMore.ToLower();
-			Console.ForegroundColor = ConsoleColor.DarkMagenta;
-			switch(orderMore)
-			{
-				case "y":
-				{
-					Order();
-					break;
-				}
-				case "n":
-				{
-					Console.WriteLine("Thank you for coming to Pierre's Bakery!");
-					break;
-				}
-				default:
-				{
-					Console.WriteLine("I'm sorry, but I didn't understand that.");
-					OrderMore();
-					break;
-				}
-			}
-		}
 
 		public static void Menu()
 		{
@@ -131,12 +41,12 @@ _-||-_/  \\ \\,/   \\,   \\,  \\,/    ,-_-          _--_-'   \/\\ \\,\ \\,/   \\
              |   ______Today's Specials______   |
              |  🍞 Bread                  $5.00  |
              |    *Buy 2, Get 1 Free!           |
-             |  🥐 Pastries               $2.00  |
+             |  🥐 Pastry                 $2.00  |
              |    *3 for $5!                    |
              |                                  |
              |        ______Food______          |
-             |  🥯 Bagels                 $2.00  |
-             |  🍩 Donuts                 $1.00  |
+             |  🥯 Bagel                  $2.00  |
+             |  🍩 Donut                  $1.00  |
              |  🍰 Cake                   $4.00  |
              |       ______Drinks______         |
              |  🥛 Milk                   $1.00  |
@@ -154,7 +64,7 @@ _-||-_/  \\ \\,/   \\,   \\,  \\,/    ,-_-          _--_-'   \/\\ \\,\ \\,/   \\
 			order = order.ToLower();
 			if (order == "o")
 			{
-				Order();
+				Store.Order();
 			}
 			else
 			{
