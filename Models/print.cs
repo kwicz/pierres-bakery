@@ -8,8 +8,8 @@ namespace Bakery.Models
 		public static void Welcome()
 		{
 			Console.Clear();
-			Console.ForegroundColor = ConsoleColor.DarkMagenta;
-			Console.WriteLine(@"𝓦𝓮𝓵𝓬𝓸𝓶𝓮 𝓽𝓸");
+			Console.ForegroundColor = ConsoleColor.DarkCyan;
+			Console.WriteLine(@"(っ◔◡◔)っ ♥ 𝓦𝓮𝓵𝓬𝓸𝓶𝓮 𝓽𝓸 ♥");
 			Console.WriteLine(@"                                                    
 -__ /\\                              )            _-_ _,,         ,,                      
   ||  \\  '                                          -/  )    _   ||                      
@@ -20,10 +20,7 @@ _-||-_/  \\ \\,/   \\,   \\,  \\,/    ,-_-          _--_-'   \/\\ \\,\ \\,/   \\
   ||                                               (                               (      
                                                                                     -_-        
 			");
-			Console.WriteLine(@"(っ◔◡◔)っ ♥ Today's Specials are: ♥");
-			Console.WriteLine(@"🍞 Buy 2 loaves of bread, Get 1 free! 🍞");
-			Console.WriteLine(@"🥐  Buy 2 pastries, Get 1 half off! 🥐");
-			Console.WriteLine("___________________________________________");
+			Console.WriteLine("_________________________________________________________________________");
 		}
 
 
@@ -57,19 +54,21 @@ _-||-_/  \\ \\,/   \\,   \\,  \\,/    ,-_-          _--_-'   \/\\ \\,\ \\,/   \\
            ((o))                                  )
             '-'----------------------------------'			
 			");
+			Bakery.Store.Order();
+		}
+
+		public static void Reciept()
+		{
+			Console.Clear();
 			Console.ForegroundColor = ConsoleColor.DarkMagenta;
-			Console.WriteLine((@"(っ◔◡◔)っ ♥ Press [O] to order! ♥"));
-			Console.ForegroundColor = ConsoleColor.White;
-			string order = Console.ReadLine();
-			order = order.ToLower();
-			if (order == "o")
-			{
-				Store.Order();
-			}
-			else
-			{
-				Menu();
-			}
+			Console.WriteLine(@"(っ◔◡◔)っ ♥ Here's your reciept! Thank you for coming to Pierre's Bakery! ♥");
+			Console.ForegroundColor = ConsoleColor.DarkCyan;
+			Console.WriteLine(@".----------------------------------.");
+			Console.WriteLine(@"|          𝓟𝓲𝓮𝓻𝓻𝓮'𝓼 𝓑𝓪𝓴𝓮𝓻𝔂          |");
+			Bakery.Store.RecieptItems();
+			Console.WriteLine(@"|   𝓣𝓱𝓪𝓷𝓴 𝔂𝓸𝓾 𝓯𝓸𝓻 𝔂𝓸𝓾𝓻 𝓫𝓾𝓼𝓲𝓷𝓮𝓼𝓼!   |");
+			Console.WriteLine(@"'----------------------------------'");
+
 		}
 
 	}

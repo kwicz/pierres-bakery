@@ -21,43 +21,15 @@ namespace Bakery
     public static void Main()
     {
       Printer.Welcome();
-      UserMenu();
+      System.Threading.Thread.Sleep(5000);
+      Printer.Menu();
     }
-
-		public static void UserMenu()
-		{
-			Console.WriteLine("");
-			Console.WriteLine(@"(っ◔◡◔)っ ♥ How can we help you today? ♥");
-			Console.WriteLine("");
-			Console.ForegroundColor = ConsoleColor.White;
-			Console.WriteLine("[1] Order \n[2] See the menu. \n[3] Learn some useful French phrases.");
-			string menuSelection = Console.ReadLine();
-			Console.ForegroundColor = ConsoleColor.DarkMagenta;
-			switch(menuSelection)
-			{
-				case "1":
-					Order();
-					break;
-				case "2":
-					Printer.Menu();
-					break;
-				case "3":
-					Console.WriteLine("What would you like to learn?");
-					break;
-				default:
-					Console.WriteLine("Sorry, we didn't understand that.");
-					UserMenu();
-					break;
-			}
-		}
 
     public static void Order()
 		{
-			// Console.Clear();
 			Console.ForegroundColor = ConsoleColor.DarkMagenta;
-			Console.WriteLine("What would you like to order?"); 
+			Console.WriteLine(@"(っ◔◡◔)っ ♥ What would you like to order today? ♥"); 
 			Console.ForegroundColor = ConsoleColor.White;
-			Console.WriteLine("[Enter Item]\n[M] to see the Menu.");
 			string userOrder = Console.ReadLine();
 			userOrder = userOrder.ToLower();
 			Console.ForegroundColor = ConsoleColor.DarkMagenta;
@@ -71,17 +43,18 @@ namespace Bakery
 			}
       else
       {
-        Console.WriteLine("I'm sorry, but I didn't understand that.");
+        Console.WriteLine(@"(っ◔◡◔)っ ♥ I'm sorry, but I didn't understand that. ♥");
         Order();
       }
-			Console.ForegroundColor = ConsoleColor.DarkMagenta;
-			Console.WriteLine("The total cost of your order is $" + orderCost + ".");
+      Console.ForegroundColor = ConsoleColor.DarkMagenta;
+			Console.WriteLine(@"(っ◔◡◔)っ ♥ That brings your total to $" + orderCost + ". ♥");
 			OrderMore();
 		}
 
     public static void AddToOrder(string food)
     {
-      Console.WriteLine("How many " + food + "s would you like?");
+      Console.WriteLine(@"(っ◔◡◔)っ ♥ How many " + food + "s would you like? ♥");
+      Console.ForegroundColor = ConsoleColor.White;
       string amountString = Console.ReadLine();
       int amount = int.Parse(amountString);
       for (int i = 0; i < amount; i++)
@@ -108,7 +81,7 @@ namespace Bakery
 		{
 			// Console.Clear();
 			Console.ForegroundColor = ConsoleColor.DarkMagenta;
-			Console.WriteLine("Would you like to order more?");
+			Console.WriteLine(@"(っ◔◡◔)っ ♥ Would you like to order more? ♥");
 			Console.ForegroundColor = ConsoleColor.White;
 			Console.WriteLine("[Y]es \n[N]o");
 			string orderMore = Console.ReadLine();
@@ -118,28 +91,33 @@ namespace Bakery
 			{
 				case "y":
 				{
-					Order();
+          Printer.Menu();
 					break;
 				}
 				case "n":
 				{
-					Console.WriteLine("Thank you for coming to Pierre's Bakery!");
+					Printer.Reciept();
 					break;
 				}
 				default:
 				{
-					Console.WriteLine("I'm sorry, but I didn't understand that.");
+					Console.WriteLine(@"(っ◔◡◔)っ ♥ I'm sorry, but I didn't understand that. ♥");
 					OrderMore();
 					break;
 				}
 			}
 		}
 
-
-
-
-
-
+    public static void RecieptItems()
+    {
+      foreach (string item in orderItems)
+      {
+        Console.WriteLine(@"
+|  " + item + "                      $" + menuItems[item] + ".00 |");
+      }
+      Console.WriteLine(@"
+|                     Total: $" + orderCost + ".00 |");
+    }
 
 
   }
