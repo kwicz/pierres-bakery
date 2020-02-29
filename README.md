@@ -7,44 +7,41 @@
 
 ## Preview
 
-[![Landing Page Preview](url-for-img)]
+![Landing Page Preview](landing-page.png)
 
 
 ## Description
 
-_{This is a detailed description of your application. Its purpose and usage.  Give as much detail as needed to explain what the application does, and any other information you want users or other developers to have. }_
+_Welcome to Pierre's Bakery, where the food is fresh and the deals are plentiful!  This application allows users to order items off of Pierre's Bakery's menu.  At the end of a user's order, the items and total cost are compiled into an easy-to-read reciept for the user._
 
-## Project Specification
+## Behavior Driven Project Specifications
 
 | Behavior | Input | Output |
 |:---|:---:|:---:|
-| | |
-| | |
-| | |
-| | |
-| | |
-| | |
+|User orders a menu item|1 Bagel|Order total increases by $2.00|
+|User enters a single item of the daily deal|1 Bread|Order total increases by $5.00|
+|User selects enough sale items to qualify for a deal|3 Breads|Order total increases by $10|
 
 ## Setup/Installation Requirements
 
-In Terminal:
+In your computer's terminal:
 
-* Navigate to where you want this application to be saved, i.e.:
-```cd desktop```
-* Clone the file from GitHub with HTTPS
-```git clone https://github.com/kwicz/pierres-bakery.git```
-* Open file in your preferred text editor
-* On Mac: ```open -a {your text editor} pierres-bakery```
-* On Windows: ```pierres-bakery```
-
-To Download Manually:
-
-* Navigate to https://github.com/kwicz/pierres-bakery.
-* Click green "Clone or Download" button.
-* Click "Download ZIP".
-* Click downloaded file to unzip.
-* Open folder called "pierres-bakery-master".
-* Right click "index.html" and select your preferred browser or text editor.
+1. Navigate to where you want this application to be saved, i.e.:
+```sh
+cd desktop
+```
+2. Clone the file from GitHub with HTTPS
+```sh
+git clone https://github.com/kwicz/pierres-bakery.git
+```
+3.  Enter into the new file directory
+```sh
+cd pierres-bakery
+```
+4.  Start the program
+```sh
+dotnet run
+```
 
 ## Known Bugs
 
