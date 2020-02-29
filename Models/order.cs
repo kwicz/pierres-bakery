@@ -5,9 +5,11 @@ namespace Bakery.Models
 {
 	public class NewOrder
 	{
-		public static double orderCost = 0;
+		// Track customer's order
+		public static int orderCost = 0;
 		public static List<string> orderItems = new List<string> {};
 
+		// Take customer's order and ensure that item is on the menu
 		public static void Order()
 		{
 			Console.ForegroundColor = ConsoleColor.DarkMagenta;
@@ -30,35 +32,38 @@ namespace Bakery.Models
 			OrderMore();
 		}
 
+		// Make calculations for customer order
     public static void AddToOrder(string food)
     {
       Console.WriteLine(@"(っ◔◡◔)っ ♥ How many " + food + "s would you like? ♥");
       Console.ForegroundColor = ConsoleColor.White;
       string amountString = Console.ReadLine();
       int amount = int.Parse(amountString);
-      for (int i = 0; i < amount; i++)
-      {
-        orderItems.Add(food);
-        switch(food)
-        {
-          case "bread":
-            Bread bread = new Bread();
-            orderCost += bread.OrderBread(amount);
-            break;
-          case "pastry":
-            Pastry pastry = new Pastry();
-            orderCost += pastry.OrderPastries(amount);
-            break;
-          default:
-            orderCost += Menu.menuItems[food];
-            break;
-        }
+			// Add items to order
+			for (int i= 0; i < amount; i++)
+			{
+				orderItems.Add(food);
+			}
+			// Add items cost to total cost
+			switch(food)
+			{
+				case "bread":
+          Bread bread = new Bread();
+          orderCost += bread.OrderBread(amount);
+					break;
+				case "pastry":
+					Pastry pastry = new Pastry();
+					orderCost += pastry.OrderPastries(amount);
+					break;
+				default:
+					orderCost = Menu.menuItems[food] * amount;
+					break;
       }
     }
 
+		// Evaluate if customer is finished ordering
 		public static void OrderMore()
 		{
-			// Console.Clear();
 			Console.ForegroundColor = ConsoleColor.DarkMagenta;
 			Console.WriteLine(@"(っ◔◡◔)っ ♥ Is there anything else I can get for you? ♥");
 			Console.ForegroundColor = ConsoleColor.White;
@@ -69,24 +74,19 @@ namespace Bakery.Models
 			switch(orderMore)
 			{
 				case "y":
-				{
           Printer.Menu();
 					break;
-				}
 				case "n":
-				{
 					Printer.Reciept();
 					break;
-				}
 				default:
-				{
 					Console.WriteLine(@"(っ◔◡◔)っ ♥ I'm sorry, but I didn't understand that. ♥");
 					OrderMore();
 					break;
-				}
 			}
 		}
 
+		// Print order totals to reciept
 		public static void RecieptItems()
     {
       foreach (string item in orderItems)

@@ -4,30 +4,32 @@ namespace Bakery.Models
 {
 	public class Menu
 	{
-		public static Dictionary<string, double> menuItems = new Dictionary<string, double>(6){
-			{"bagel", 2.00},
-			{"donut", 1.00},
-			{"cake", 4.00},
-			{"milk", 1.00},
-			{"coffee", 2.00},
-			{"wine", 6.00},
-			{"bread", 5.00},
-			{"pastry", 2.00}
+		// Bakery Menu
+		public static Dictionary<string, int> menuItems = new Dictionary<string, int>(6){
+			{"bagel", 2},
+			{"donut", 1},
+			{"cake", 4},
+			{"milk", 1},
+			{"coffee", 2},
+			{"wine", 6},
+			{"bread", 5},
+			{"pastry", 2}
 					};
 	}
 
+	// Bread Deal
 	public class Bread
 	{
-		public double Cost { get; set; }
+		public int Cost { get; set; }
 
 		public Bread()
 		{
-			Cost = 5.00;
+			Cost = 5;
 		}
 
-		public double OrderBread(int amount)
+		public int OrderBread(int amount)
 		{
-			double total = 0;
+			int total = 0;
 			for (int i = 1; i <= amount; i++)
 			{
 				if (i % 3 != 0)
@@ -39,18 +41,19 @@ namespace Bakery.Models
 		}
 	}
 
+	// Pastry Deal
 	public class Pastry
 	{
-		public double Cost { get; set; }
+		public int Cost { get; set; }
 
 		public Pastry()
 		{
-			Cost = 2.00;
+			Cost = 2;
 		}
 
-		public double OrderPastries(int amount)
+		public int OrderPastries(int amount)
 		{
-			double total = 0;
+			int total = 0;
 			for (int i = 1; i <= amount; i++)
 			{
 				if (i % 3 != 0)

@@ -4,6 +4,7 @@ namespace Bakery.Models
 {
 	public class Printer
 	{
+		// Print Greeting
 		public static void Welcome()
 		{
 			Console.Clear();
@@ -24,7 +25,7 @@ _-||-_/  \\ \\,/   \\,   \\,  \\,/    ,-_-          _--_-'   \/\\ \\,\ \\,/   \\
 		}
 
 
-
+		// Print Menu
 		public static void Menu()
 		{
 			Console.Clear();
@@ -57,6 +58,7 @@ _-||-_/  \\ \\,/   \\,   \\,  \\,/    ,-_-          _--_-'   \/\\ \\,\ \\,/   \\
 			NewOrder.Order();
 		}
 
+		// Print Reciept, using data from New Order
 		public static void Reciept()
 		{
 			Console.Clear();
@@ -66,8 +68,8 @@ _-||-_/  \\ \\,/   \\,   \\,  \\,/    ,-_-          _--_-'   \/\\ \\,\ \\,/   \\
 			Console.WriteLine(@".------------------------------.");
 			Console.WriteLine(@"|        𝓟𝓲𝓮𝓻𝓻𝓮'𝓼 𝓑𝓪𝓴𝓮𝓻𝔂        |");
 			NewOrder.RecieptItems();
-			Console.WriteLine(@"| 𝓣𝓱𝓪𝓷𝓴 𝔂𝓸𝓾 𝓯𝓸𝓻 𝔂𝓸𝓾𝓻 𝓫𝓾𝓼𝓲𝓷𝓮𝓼𝓼! |");
-			Console.WriteLine(@"'------------------------------'");
+			Console.WriteLine(@"|  𝓣𝓱𝓪𝓷𝓴 𝔂𝓸𝓾 𝓯𝓸𝓻 𝔂𝓸𝓾𝓻 𝓫𝓾𝓼𝓲𝓷𝓮𝓼𝓼! |");
+			Console.WriteLine(@"'-------------------------------'");
 			Console.ForegroundColor = ConsoleColor.White;
 		}
 	}
